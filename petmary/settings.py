@@ -33,6 +33,9 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     # My apps
     'pets',
+    'users',
+
+    'bootstrap4',
 
     # Default apps
     'django.contrib.admin',
