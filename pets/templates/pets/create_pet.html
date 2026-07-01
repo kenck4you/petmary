@@ -1,0 +1,54 @@
+{% extends "pets/base.html" %}
+
+{% block page_header %}
+
+<div class="text-center my-5">
+
+    <h1 class="display-5 fw-bold">
+        🐾 Create Your Pet
+    </h1>
+
+    <p class="lead text-muted">
+        Every great adventure starts with a name.
+    </p>
+
+</div>
+
+{% endblock page_header %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+
+    <div class="col-md-6 col-lg-5">
+
+        <div class="card shadow-sm border-0">
+
+            <div class="card-body p-4">
+
+                <form method="post"
+                      action="{% url 'pets:create_pet' %}">
+
+                    {% csrf_token %}
+
+                    {{ form.as_p }}
+
+                    <button
+                        class="btn btn-primary w-100 mt-3"
+                        type="submit">
+
+                        Create Pet
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock content %}

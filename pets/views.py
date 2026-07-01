@@ -1,10 +1,14 @@
 from django.shortcuts import render, redirect
 
+from .models import Pet
 from .forms import PetForm
+
+from django.contrib.auth.decorators import login_required
 
 def index(request):
     return render(request, 'pets/index.html')
 
+@login_required
 def create_pet(request):
     if request.method != 'POST':
         form = PetForm()
@@ -18,3 +22,8 @@ def create_pet(request):
     context = {'form': form}
     return render(request, 'pets/create_pet.html', context)
         
+def pet(request, pet_id):
+    pet = Pet.objects.get(id=pet_id)
+
+    context = {'pet': pet}
+    return render(request, 'pets/pet.html', context)
